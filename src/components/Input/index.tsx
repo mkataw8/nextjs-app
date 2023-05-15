@@ -13,7 +13,6 @@ export const Input = (props: InputProps) => {
   const [amount, setAmount] = useState<number>();
   const add = (total: number[], amount: number) => {
     setTotal([...total, amount]);
-    console.log("added" + [amount]);
   };
 
   const { date } = props;
