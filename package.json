@@ -10,10 +10,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
     "@prisma/client": "^4.11.0",
     "@t3-oss/env-nextjs": "^0.2.1",
+    "@types/react-datepicker": "^4.11.2",
     "next": "^13.4.1",
     "react": "18.2.0",
+    "react-calendar": "^4.2.1",
+    "react-datepicker": "^4.11.0",
     "react-dom": "18.2.0",
     "zod": "^3.21.4"
   },
