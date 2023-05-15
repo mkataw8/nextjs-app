@@ -20,8 +20,9 @@ import {
   parseISO,
   startOfToday,
 } from "date-fns";
+import { any } from "zod";
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -127,7 +128,7 @@ export const DateAdder = () => {
   );
 };
 
-function Meeting({ meeting }) {
+function Meeting({ meeting }: any) {
   let startDateTime = parseISO(meeting.startDatetime);
   let endDateTime = parseISO(meeting.endDatetime);
 
@@ -176,13 +177,13 @@ function Meeting({ meeting }) {
           <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
-                {({ active }) => (
+                {({ active }: { active: boolean }) => (
                   <a
                     href="#"
-                    className={
-                      (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm")
-                    }
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
                   >
                     Edit
                   </a>
