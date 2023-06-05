@@ -3,8 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import Calendar from "react-calendar";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ZodNumber } from "zod";
-import { val } from "cheerio/lib/api/attributes";
 
 type AmountProps = {
   setAmount: Dispatch<SetStateAction<number>>;
