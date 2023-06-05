@@ -10,23 +10,25 @@ type getBlock = {
   getTotals: number[];
   setGetTotals: Dispatch<SetStateAction<number[]>>;
   date: string;
+  data: any;
+  setData: any;
 };
 
 export const Graph = (props: getBlock) => {
-  const { getTotals, setGetTotals, date } = props;
+  const { getTotals, setGetTotals, date, data, setData } = props;
   console.log(getTotals);
   useEffect(() => {
     var config = {
       type: "line",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
+          "Septempber",
+          "October",
+          "November",
+          "December",
           "April",
+          "March",
           "May",
-          "June",
-          "July",
         ],
         datasets: [
           {

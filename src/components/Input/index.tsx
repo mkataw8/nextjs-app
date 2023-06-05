@@ -17,18 +17,20 @@ type AmountProps = {
 };
 
 export const Input = (props: AmountProps) => {
-  let { setAmount, amount, getTotals, setGetTotals, data, setData } = props;
+  let { setAmount, amount, getTotals, setGetTotals, data, setData, date } =
+    props;
   const [total, setTotal] = useState<number[]>([]);
 
   const add = (total: number[], amount: number) => {
     setTotal([...total, amount]);
-    setData([...data, { amount, data: [date] }]);
+    setData([...data, { amount, data: date }]);
     setAmount(amount);
     setGetTotals([...total, amount]);
   };
 
   const clearTotal = () => {
     setTotal([]);
+    setData([]);
   };
   const [value, setValue] = useState(amount);
   return (

@@ -9,9 +9,11 @@ import { DateAdder } from "~/components/DateAdder";
 import { DatePicker } from "~/components/DatePicker";
 import { Graph } from "~/components/Graph";
 import { Input } from "~/components/Input";
+import { Login } from "~/components/Login";
 import { MyCalendar } from "~/components/MyCalendar";
-import { Testing } from "~/components/Testing";
-
+import { Profile } from "~/components/Profile";
+import { Signup } from "~/components/Signup";
+import { initFirebase } from "../Firebase/firebaseapp";
 const Home: NextPage = () => {
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
@@ -19,13 +21,21 @@ const Home: NextPage = () => {
 
   const [data, setData] = useState([
     {
-      thedate: date,
-      amount: 4,
+      date: date,
+      amount: null,
     },
   ]);
+  const [signIn, setSignIn] = useState(null);
+
+  const app = initFirebase();
+  console.log(app);
+
   return (
     <>
-      <main className="flex min-h-screen justify-center bg-gradient-to-r from-pink-500 to-yellow-500">
+      {/* <Signup /> */}
+
+      <Profile />
+      <main className="flex min-h-screen justify-center  bg-gradient-to-r from-pink-500 to-yellow-500">
         <div className=" mt-10 flex  flex-col items-center ">
           <div>
             <header className=" text-9xl  font-bold text-white motion-safe:animate-pulse">
@@ -43,6 +53,8 @@ const Home: NextPage = () => {
             getTotals={getTotals}
             data={data}
             setData={setData}
+            date={date}
+            setDate={setDate}
           />
           <DateAdder
             date={date}
@@ -57,8 +69,12 @@ const Home: NextPage = () => {
             data={data}
             setData={setData}
           />
-          <Graph setGetTotals={setGetTotals} getTotals={getTotals} />
-          <Testing />
+          <Graph
+            setGetTotals={setGetTotals}
+            getTotals={getTotals}
+            data={data}
+            setData={setData}
+          />
         </div>
       </main>
     </>
