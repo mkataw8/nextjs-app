@@ -16,7 +16,7 @@
     "@t3-oss/env-nextjs": "^0.2.1",
     "@types/react-datepicker": "^4.11.2",
     "calendar-utils": "^0.10.4",
-    "chart.js": "^2.9.4",
+    "chart.js": "^4.3.0",
     "dayjs": "^1.11.7",
     "firebase": "^9.22.1",
     "next": "^13.4.1",

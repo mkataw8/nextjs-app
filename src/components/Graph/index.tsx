@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Calendar from "react-calendar";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { Chart, registerables } from "chart.js";
+import { Chart } from "chart.js";
 import { get } from "http";
 
 type getBlock = {
@@ -108,8 +108,8 @@ export const Graph = (props: getBlock) => {
         },
       },
     };
-    var ctx = document.getElementById("line-chart").getContext("2d");
-    window.myLine = new Chart(ctx, config);
+    // var ctx = document.getElementById("line-chart").getContext("2d");
+    // window.myLine = new Chart(ctx, config);
   }, [getTotals]);
 
   return (
