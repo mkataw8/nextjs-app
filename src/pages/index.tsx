@@ -34,7 +34,7 @@ const Home: NextPage = () => {
     <>
       {/* <Signup /> */}
 
-      <Profile />
+      {/* <Profile /> */}
       <main className="flex min-h-screen justify-center  bg-gradient-to-r from-pink-500 to-yellow-500">
         <div className=" mt-10 flex  flex-col items-center ">
           <div>
