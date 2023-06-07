@@ -1,16 +1,11 @@
-import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Calendar from "react-calendar";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
 type DatePickerProps = {
   setDate: Dispatch<SetStateAction<string>>;
-  date: string;
 };
 
 export const DatePicker = (props: DatePickerProps) => {
-  const { setDate, date } = props;
+  const { setDate } = props;
 
   return (
     <div className="p-5 ">

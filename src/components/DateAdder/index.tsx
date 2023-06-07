@@ -1,11 +1,4 @@
-import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Calendar from "react-calendar";
-import { Dispatch, SetStateAction, useState, Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { EllipsisHorizontalCircleIcon } from "@heroicons/react/24/outline";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { type Dispatch, type SetStateAction } from "react";
 
 // function classNames(...classes: any[]) {
 //   return classes.filter(Boolean).join(" ");
@@ -19,8 +12,7 @@ type DateAdderProps = {
 };
 
 export const DateAdder = (props: DateAdderProps) => {
-  const { date, amount, setAmount, setDate } = props;
-  const [Total, setTotal] = useState([]);
+  const { date, amount, setAmount } = props;
   const checkPL = (x: number) => {
     if (x > 0) {
       return <p className="text-green-700 ">${amount}</p>;
@@ -30,7 +22,6 @@ export const DateAdder = (props: DateAdderProps) => {
   };
   const removeAll = () => {
     setAmount(0);
-    setTotal([]);
   };
   if (!amount || !date) {
     return (

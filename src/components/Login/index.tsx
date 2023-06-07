@@ -1,7 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import { Signup } from "../Signup";
 import Link from "next/link";
+import { useState } from "react";
 
 // interface LoginType {
 //   email: string;
@@ -11,7 +10,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth();
-  const signIn = (e: any) => {
+  const signIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -65,10 +64,12 @@ export const Login = () => {
 
           <p className=" flex justify-center pt-5 text-sm text-white">
             Not a member?{" "}
-            <a className="ml-1 italic text-blue-500 hover:cursor-pointer">
-              {" "}
+            <Link
+              className="ml-1 italic text-blue-500 hover:cursor-pointer"
+              href="/signup"
+            >
               Register
-            </a>
+            </Link>
           </p>
         </div>
       </div>

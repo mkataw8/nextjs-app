@@ -1,11 +1,12 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, type User } from "firebase/auth";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const Profile = () => {
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState<User | null>(null);
   const auth = getAuth();
   useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user: any) => {
+    const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
       } else {
@@ -16,17 +17,21 @@ export const Profile = () => {
       listen();
     };
   }, []);
-  const userSignOut = () => {
-    signOut(auth).then(() => {
-      console.log("singed out");
-    });
-  };
+  //  const userSignOut = () => {
+  //   signOut(auth).then(() => {
+  //     console.log("signed out");
+  //   });
+  // };
   return (
     <div className=" w-100vh  flex h-8 items-center justify-end bg-slate-900 pr-20 ">
       <ul className="  pl-30 flex  space-x-2  text-white ">
-        <li className="hover:cursor-pointer hover:text-orange-600">Login</li>
+        <li className="hover:cursor-pointer hover:text-orange-600">
+          <Link href="/login">Login</Link>
+        </li>
         <li>/</li>
-        <li className=" hover:cursor-pointer hover:text-orange-600">Signup</li>
+        <li className=" hover:cursor-pointer hover:text-orange-600">
+          <Link href="/signup">Sign Up</Link>
+        </li>
       </ul>
     </div>
   );

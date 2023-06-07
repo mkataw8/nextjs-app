@@ -1,16 +1,14 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import Link from "next/link";
-import { Login } from "../Login";
+import { useState } from "react";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const auth = getAuth();
-  const signUp = (e: any) => {
-    e.preventDefault();
 
+  const signUp = (e: any) => {
     if (password == confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -25,7 +23,7 @@ export const Signup = () => {
   };
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-900">
-      <div className="flex flex-col  rounded-md border-4 border-slate-700 bg-slate-800 p-8">
+      <form className="flex flex-col  rounded-md border-4 border-slate-700 bg-slate-800 p-8">
         <header className=" mb-5 text-center text-5xl font-bold text-white motion-safe:animate-pulse">
           P&L Journal
         </header>
@@ -75,11 +73,11 @@ export const Signup = () => {
             Already a member?{" "}
             <p className="ml-1 italic text-blue-500 hover:cursor-pointer">
               {" "}
-              Sign in
+              <Link href="/login">Sign in</Link>
             </p>
           </p>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

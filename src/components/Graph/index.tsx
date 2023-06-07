@@ -1,28 +1,23 @@
-import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Calendar from "react-calendar";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { Chart } from "chart.js";
-import { get } from "http";
+import { Chart, registerables, type ChartConfiguration } from "chart.js";
+import { useEffect } from "react";
 
 type getBlock = {
   getTotals: number[];
-  setGetTotals: Dispatch<SetStateAction<number[]>>;
   date: string;
-  data: any;
-  setData: any;
+  ctx: any;
 };
 
 export const Graph = (props: getBlock) => {
-  const { getTotals, setGetTotals, date, data, setData } = props;
+  let chart: Chart;
+  Chart.register(...registerables);
+  const { getTotals, date } = props;
   console.log(getTotals);
   useEffect(() => {
-    var config = {
+    const config: ChartConfiguration<"line"> = {
       type: "line",
       data: {
         labels: [
-          "Septempber",
+          "September",
           "October",
           "November",
           "December",
@@ -32,7 +27,6 @@ export const Graph = (props: getBlock) => {
         ],
         datasets: [
           {
-            // label: new Date().getFullYear(),
             label: "Current",
             backgroundColor: "#3182ce",
             borderColor: "#3182ce",
@@ -42,74 +36,25 @@ export const Graph = (props: getBlock) => {
         ],
       },
       options: {
-        maintainAspectRatio: false,
-        responsive: true,
-        title: {
-          display: false,
-          text: "Progress",
-          fontColor: "white",
-        },
-        legend: {
-          labels: {
-            fontColor: "white",
-          },
-          align: "end",
-          position: "bottom",
-        },
-        tooltips: {
-          mode: "index",
-
-          intersect: false,
-        },
-
-        scales: {
-          xAxes: [
-            {
-              ticks: {},
-              display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Month",
-                fontColor: "white",
-              },
-              gridLines: {
-                display: false,
-                borderDash: [2],
-                borderDashOffset: [2],
-                color: "rgba(33, 37, 41, 0.3)",
-                zeroLineColor: "rgba(0, 0, 0, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
-            },
-          ],
-          yAxes: [
-            {
-              ticks: {
-                fontColor: "rgba(255,255,255,.7)",
-              },
-              display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Value",
-                fontColor: "white",
-              },
-              gridLines: {
-                borderDash: [3],
-                borderDashOffset: [3],
-                drawBorder: false,
-                color: "rgba(255, 255, 255, 0.15)",
-                zeroLineColor: "rgba(33, 37, 41, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
-            },
-          ],
-        },
+        // ...chart options
       },
     };
-    // var ctx = document.getElementById("line-chart").getContext("2d");
-    // window.myLine = new Chart(ctx, config);
+
+    const element = document.getElementById("line-chart") as HTMLCanvasElement;
+    if (!element) {
+      return;
+    }
+
+    const ctx = element.getContext("2d");
+    if (!ctx) {
+      return;
+    }
+
+    chart = new Chart(ctx, config);
+
+    return () => {
+      chart.destroy(); // Cleanup chart instance on component unmount
+    };
   }, [getTotals]);
 
   return (
