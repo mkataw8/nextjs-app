@@ -18,7 +18,6 @@
     "calendar-utils": "^0.10.4",
     "chart.js": "^4.3.0",
     "dayjs": "^1.11.7",
-    "firebase": "^9.22.1",
     "next": "^13.4.1",
     "react": "18.2.0",
     "react-calendar": "^4.2.1",
