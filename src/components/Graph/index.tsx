@@ -5,26 +5,22 @@ type getBlock = {
   getTotals: number[];
   date: string;
   ctx: any;
+  data: { date: string; amount: number }[];
 };
 
 export const Graph = (props: getBlock) => {
   let chart: Chart;
   Chart.register(...registerables);
-  const { getTotals, date } = props;
+  const { getTotals, date, data } = props;
   console.log(getTotals);
   useEffect(() => {
     const config: ChartConfiguration<"line"> = {
       type: "line",
       data: {
-        labels: [
-          "September",
-          "October",
-          "November",
-          "December",
-          "April",
-          "March",
-          "May",
-        ],
+        labels: data.map((day) => {
+          const { date } = day;
+          return day.date;
+        }),
         datasets: [
           {
             label: "Current",

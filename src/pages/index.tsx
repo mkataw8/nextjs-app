@@ -10,25 +10,26 @@ import { Profile } from "~/components/Profile";
 const Home: NextPage = () => {
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
+  const [holder] = useState();
   const [getTotals, setGetTotals] = useState([0]);
 
   const [data, setData] = useState([
     {
       date: date,
-      amount: 0,
+      amount: holder,
     },
   ]);
 
   return (
     <>
       <Profile />
-      <main className="flex min-h-screen justify-center  bg-gradient-to-r from-pink-500 to-yellow-500">
+      <main className="min-w-screen flex min-h-screen justify-center  bg-gradient-to-r from-pink-500 to-yellow-500">
         <div className=" mt-10 flex  flex-col items-center ">
           <div>
-            <header className=" text-9xl  font-bold text-white motion-safe:animate-pulse">
+            <header className="  text-center text-6xl font-bold  text-white motion-safe:animate-pulse sm:text-9xl">
               P&L Journal
             </header>
-            <h1 className="text-center text-2xl  italic text-white">
+            <h1 className="text-center  italic text-white  sm:text-2xl ">
               Track Your Performance in the Market by recording your daily
               P&L&apos;S
             </h1>
@@ -50,7 +51,7 @@ const Home: NextPage = () => {
             setAmount={setAmount}
           />
           <MyCalendar data={data} setData={setData} />
-          <Graph getTotals={getTotals} date={""} ctx={undefined} />
+          <Graph data={data} getTotals={getTotals} date={""} ctx={undefined} />
         </div>
       </main>
     </>

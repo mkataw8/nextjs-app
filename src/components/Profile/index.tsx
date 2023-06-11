@@ -23,7 +23,7 @@ export const Profile = () => {
   //   });
   // };
   return (
-    <div className=" w-100vh  flex h-8 items-center justify-end bg-slate-900 pr-20 ">
+    <div className=" w-100vh min-w-screen flex h-8 items-center justify-end bg-slate-900 pr-10 sm:pr-20 ">
       <ul className="  pl-30 flex  space-x-2  text-white ">
         <li className="hover:cursor-pointer hover:text-orange-600">
           <Link href="/login">Login</Link>

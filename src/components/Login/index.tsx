@@ -6,6 +6,7 @@ import { useState } from "react";
 //   email: string;
 //   password: string;
 // }
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +21,7 @@ export const Login = () => {
         console.log(error);
       });
   };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-900">
       <div className="flex flex-col ">
@@ -72,6 +74,7 @@ export const Login = () => {
             </Link>
           </p>
         </div>
+        <button>click Me</button>
       </div>
     </div>
   );
