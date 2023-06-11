@@ -27,14 +27,14 @@ export const Input = (props: AmountProps) => {
     setData([]);
   };
 
-  const [value, setValue] = useState(amount);
+  const [value, setValue] = useState(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = Number(e.target.value);
     if (!isNaN(inputValue)) {
       setValue(inputValue);
     } else {
-      setValue(0);
+      setValue(inputValue);
     }
   };
 
@@ -46,7 +46,6 @@ export const Input = (props: AmountProps) => {
           type="number"
           className="ml-2 py-2 pl-2"
           placeholder="Enter P/L for the day"
-          value={value}
         />
         <button
           onClick={() => {

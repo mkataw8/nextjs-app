@@ -18,15 +18,14 @@ export const Graph = (props: getBlock) => {
       type: "line",
       data: {
         labels: data.map((day) => {
-          const { date } = day;
-          return day.date;
+          return [day.date];
         }),
         datasets: [
           {
             label: "Current",
             backgroundColor: "#3182ce",
             borderColor: "#3182ce",
-            data: getTotals,
+            data: [0, ...getTotals],
             fill: false,
           },
         ],
@@ -54,7 +53,7 @@ export const Graph = (props: getBlock) => {
   }, [getTotals]);
 
   return (
-    <div className="bg-blueGray-700 relative mb-6 flex w-full min-w-0 flex-col break-words rounded shadow-lg">
+    <div className="bg-blueGray-700 min-w-screen relative mb-6 flex w-full flex-col break-words rounded shadow-lg">
       <div className="mb-0 rounded-t bg-transparent px-4 py-3">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full max-w-full flex-1 flex-grow">
