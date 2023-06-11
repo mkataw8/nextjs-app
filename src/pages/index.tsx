@@ -10,13 +10,12 @@ import { Profile } from "~/components/Profile";
 const Home: NextPage = () => {
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
-  const [holder] = useState();
   const [getTotals, setGetTotals] = useState([0]);
 
   const [data, setData] = useState([
     {
       date: date,
-      amount: holder,
+      amount: amount,
     },
   ]);
 
